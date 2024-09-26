@@ -1,0 +1,102 @@
+body {
+    background-color: #fbfbfb;
+}
+
+/* For screens larger than 991.98px */
+@media (min-width: 991.98px) {
+    main {
+        padding-left: 240px;
+    }
+}
+
+/* For medium screens between 768px and 991.98px */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    main {
+        padding-left: 180px;
+        /* Adjust as per your design */
+    }
+}
+
+/* For small screens between 576px and 768px */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    main {
+        padding-left: 120px;
+        /* Adjust as per your design */
+    }
+}
+
+/* For extra small screens less than 576px */
+@media (max-width: 575.98px) {
+    main {
+        padding-left: 60px;
+        /* Adjust as per your design */
+    }
+}
+
+/* Default styles */
+main {
+    padding-left: 20px;
+    /* Default padding for very small devices or in case no media query is matched */
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 58px 0 0;
+    /* Height of navbar */
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+    width: 240px;
+    z-index: 600;
+}
+
+/* For screens 991.98px and below */
+@media (max-width: 991.98px) {
+    .sidebar {
+        width: 100%;
+        /* Sidebar takes full width */
+        position: relative;
+        /* Adjust position if necessary */
+    }
+
+    main {
+        padding-left: 0;
+        /* Remove left padding for main content */
+        width: 100%;
+        /* Main content also takes full width */
+    }
+}
+
+/* Default sidebar and main styles for larger screens */
+.sidebar {
+    width: 240px;
+    /* Set the width of the sidebar */
+    position: fixed;
+    /* Fixed sidebar position */
+    height: 100vh;
+    /* Full viewport height */
+}
+
+main {
+    padding-left: 240px;
+    /* Reserve space for the sidebar */
+    width: calc(100% - 240px);
+    /* Adjust the width based on sidebar width */
+}
+
+.sidebar .active {
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Scrollable contents if viewport is shorter than content. */
+}
