@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DailyActivityController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -30,6 +32,7 @@ Route::middleware('is_login')->group(function () {
 Route::prefix('admin')->group(function () {
     Route::middleware('authUser')->group(function () {
 
+        // User
         Route::get('user', [UserController::class, 'index'])->name('user.index');
         Route::get('user/create', [UserController::class, 'create'])->name('user.create');
         Route::post('user/create', [UserController::class, 'store'])->name('user.store');
@@ -38,6 +41,16 @@ Route::prefix('admin')->group(function () {
         Route::post('user/password/update/{id}',[UserController::class,'updatePassword']);
         Route::get('user/detail/show/{id}',[UserController::class,'fetchUserData']);
         Route::post('user/detail/update/{id}',[UserController::class,'updateDdetail']);
+
+        // Role
+        Route::get('role',[RoleController::class,'index'])->name('role.index');
+        Route::post('role/create',[RoleController::class,'store'])->name('role.store');
+        Route::get('role/get/{id}',[RoleController::class,'getRole'])->name('role.get');
+        Route::post('role/update/{id}',[RoleController::class,'update'])->name('role.update');
+        Route::get('role/delete/{id}',[RoleController::class,'destory'])->name('role.destory');
+
+        Route::get('task',[DailyActivityController::class,'index'])->name('task.index');
+        Route::post('task/add',[DailyActivityController::class,'store'])->name('task.store');
 
 
 

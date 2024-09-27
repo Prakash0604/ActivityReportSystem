@@ -26,14 +26,14 @@
                     <a href="#" class="list-group-item list-group-item-action py-2 ripple">
                         <i class="bi bi-speedometer2"></i> <span> Main dashboard</span>
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+                    <a href="{{ route('role.index') }}" class="list-group-item list-group-item-action py-2 ripple">
+                        <i class="bi bi-key-fill"></i> <span> Role</span>
+                    </a>
+                    <a href="{{ route('user.index') }}" class="list-group-item list-group-item-action py-2 ripple">
                         <i class="bi bi-people-fill"></i> <span> Users</span>
                     </a>
                     <a href="#" class="list-group-item list-group-item-action py-2 ripple active ">
                         <i class="bi bi-graph-up-arrow"></i> <span> Webiste traffic</span>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action py-2 ripple">
-                        <i class="bi bi-key-fill"></i> <span> Password</span>
                     </a>
                     <a href="#" class="list-group-item list-group-item-action py-2 ripple">
                         <i class="bi bi-graph-up-arrow"></i> <span> Analytics</span>
@@ -55,6 +55,8 @@
                     </a>
                     <a href="#" class="list-group-item list-group-item-action py-2 ripple">
                         <i class="bi bi-cash-coin"></i> <span> Sales</span></a>
+                        <a href="{{ route('user.logout') }}" class="list-group-item list-group-item-action py-2 ripple">
+                            <i class="bi bi-box-arrow-in-right"></i> <span> LogOut</span></a>
                 </div>
             </div>
         </nav>
