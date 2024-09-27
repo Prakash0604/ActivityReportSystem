@@ -55,6 +55,7 @@ Route::prefix('admin')->group(function () {
         Route::post('task/update/{id}',[DailyActivityController::class,'update'])->name('task.update');
 
         Route::get('task/detail/{id}',[DailyActivityController::class,'taskDetail'])->name('task.details');
+        Route::get('task/report/{id}',[DailyActivityController::class,'report'])->name('task.report');
 
 
 

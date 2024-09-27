@@ -21,6 +21,51 @@
             .table td {
                 vertical-align: middle;
             }
+
+            @media print {
+                body {
+                    -webkit-print-color-adjust: exact; /* To ensure background colors print */
+                }
+
+                /* Hide navigation and buttons */
+                .container, .navbar, .btn, .footer, .d-print-none {
+                    display: none !important;
+                }
+
+                /* Show only the report container */
+                .report-container, .report-container * {
+                    visibility: visible;
+                }
+
+                /* Make report-container full width and remove margins */
+                .report-container {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    border: none; /* Remove border in print */
+                    box-shadow: none; /* Remove shadow in print */
+                    margin: 0;
+                    padding: 0;
+                }
+
+                /* Adjust fonts and paddings for print */
+                .report-header h4,
+                .report-header h5 {
+                    font-size: 1.2em;
+                }
+
+                .table th,
+                .table td {
+                    font-size: 0.9em;
+                    padding: 5px;
+                }
+
+                /* Page break settings */
+                .report-container {
+                    page-break-before: always;
+                }
+            }
         </style>
         <div class="report-header">
             <h4>Daily Activity Report</h4>
@@ -30,7 +75,7 @@
             <thead>
                 <tr>
                     <th>S.N</th>
-                    <th class="w-75">Assignment</th>
+                    <th class="w-50">Assignment</th>
                     <th>Remarks</th>
                     <th>Status</th>
                 </tr>
@@ -66,8 +111,8 @@
                 <p>Approved by</p>
             </div>
         </div>
-        <div class="container mt-4">
-            <a href="" class="btn btn-primary">Print</a>
+        <div class="container mt-4 d-flex justify-content-center">
+            <a href="" onclick="window.print()" class="btn btn-primary">Print</a>
             <a href="{{ route('task.index') }}" class="btn btn-secondary">Back</a>
         </div>
     </div>

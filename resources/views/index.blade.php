@@ -32,11 +32,11 @@
                     <a href="{{ route('user.index') }}" class="list-group-item list-group-item-action py-2 ripple">
                         <i class="bi bi-people-fill"></i> <span> Users</span>
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action py-2 ripple active ">
-                        <i class="bi bi-graph-up-arrow"></i> <span> Webiste traffic</span>
+                    <a href="{{ route('task.index') }}" class="list-group-item list-group-item-action py-2 ripple active ">
+                        <i class="bi bi-graph-up-arrow"></i> <span> Task</span>
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action py-2 ripple">
-                        <i class="bi bi-graph-up-arrow"></i> <span> Analytics</span>
+                    <a href="{{ route('task.report',Auth::id()) }}" class="list-group-item list-group-item-action py-2 ripple">
+                        <i class="bi bi-graph-up-arrow"></i> <span>Activity Report</span>
                     </a>
                     <a href="#" class="list-group-item list-group-item-action py-2 ripple">
                         <i class="bi bi-pie-chart-fill"></i> <span> SEO</span>

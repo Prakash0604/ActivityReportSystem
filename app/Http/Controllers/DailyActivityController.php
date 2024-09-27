@@ -19,9 +19,15 @@ class DailyActivityController extends Controller
         $this->model=$taskService;
     }
     public function index(){
-        $tasks=Task::with(['taskDetail','createdBy'])->where('created_by',Auth::id())->get();
-        $tasksCount =DB::table('tasks')->join('task_details','task_details.task_id','tasks.id')
-        ->where('task_details.status',0)->count();
+        if(Auth::user()->role_id==1){
+            $tasks=Task::with(['taskDetail','createdBy'])->get();
+            $tasksCount =DB::table('tasks')->join('task_details','task_details.task_id','tasks.id')
+            ->where('task_details.status',0)->count();
+        }else{
+            $tasks=Task::with(['taskDetail','createdBy'])->where('created_by',Auth::id())->get();
+            $tasksCount =DB::table('tasks')->join('task_details','task_details.task_id','tasks.id')
+            ->where('task_details.status',0)->count();
+        }
         return view('DailyTask.index',compact('tasks','tasksCount'));
     }
 
@@ -101,7 +107,16 @@ class DailyActivityController extends Controller
     }
 
     public function taskDetail($id){
+        if(Auth::user()->role_id==1){
+        $tasks=Task::with(['taskDetail','createdBy'])->where('id',$id)->get();
+    }else{
         $tasks=Task::with(['taskDetail','createdBy'])->where('created_by',Auth::id())->where('id',$id)->get();
+    }
         return view('DailyTask.TaskDetail',compact('tasks'));
+    }
+
+    public function report($id){
+       $users= Task::with(['taskDetail','createdBy'])->where('created_by',$id)->get();
+        return view('DailyTask.report',compact('users'));
     }
 }
