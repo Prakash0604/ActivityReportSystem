@@ -15,4 +15,15 @@ class TaskService{
         $data=$this->model->create($data);
         return $data;
     }
+
+    public function taskEdit($id){
+        $data=$this->model->find($id);
+        return $data;
+    }
+
+    public function updateTask(array $data,$id){
+        $task=$this->model->find($id);
+        $task->update($data);
+        return $task;
+    }
 }
