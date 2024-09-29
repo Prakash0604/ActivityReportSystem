@@ -116,7 +116,8 @@ class DailyActivityController extends Controller
     }
 
     public function report($id){
+        $employees=User::whereNot('id',Auth::user())->get();
        $users= Task::with(['taskDetail','createdBy'])->where('created_by',$id)->get();
-        return view('DailyTask.report',compact('users'));
+        return view('DailyTask.report',compact('users','employees'));
     }
 }

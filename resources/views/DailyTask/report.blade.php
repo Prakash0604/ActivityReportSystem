@@ -1,6 +1,7 @@
 @extends('index')
 @section('content')
     <div class="container">
+        @if (Auth::user()->role_id==1)
         <a type="button" class="btn btn-primary" id="filterData">Toggle Filter</a>
         <div class="container togglebutton">
             <form action="">
@@ -9,9 +10,9 @@
                         <label for="" class="form-label">User</label>
                         <select class="form-select form-select-lg" name="" id="">
                             <option selected>Select one</option>
-                            <option value="">New Delhi</option>
-                            <option value="">Istanbul</option>
-                            <option value="">Jakarta</option>
+                            @foreach ($employees as $emp)
+                            <option><a href="{{ route('task.report',$emp->id) }}">{{ $emp->name }}</a></option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-6 mt-4">
@@ -20,6 +21,7 @@
                 </div>
             </form>
         </div>
+        @endif
         <div class="container report-container">
             <style>
                 .report-container {
@@ -95,9 +97,9 @@
             </style>
             <div class="report-header">
                 <h4>Overall Activity Report</h4>
-                <h5>Name: {{ Auth::user()->name }}</h5>
+                <h5>Name: {{ $users[0]->createdBy->name }}</h5>
             </div>
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered ">
                 <thead class="thead-dark">
                     <tr>
                         <th colspan="8" class="text-center">Assignment Detail</th>
@@ -158,6 +160,7 @@
         </div>
     </div>
     <script>
+        $(".togglebutton").hide();
         $("#filterData").on("click", function() {
             $(".togglebutton").toggle(1500);
         })

@@ -23,43 +23,30 @@
         <nav id="sidebarMenu" class="collapse d-lg-block sidebar mt-0 collapse bg-white">
             <div class="position-sticky">
                 <div class="list-group list-group-flush mx-3">
-                    <a href="#" class="list-group-item list-group-item-action py-2 ripple">
-                        <i class="bi bi-speedometer2"></i> <span> Main dashboard</span>
-                    </a>
-                    <a href="{{ route('role.index') }}" class="list-group-item list-group-item-action py-2 ripple">
-                        <i class="bi bi-key-fill"></i> <span> Role</span>
-                    </a>
-                    <a href="{{ route('user.index') }}" class="list-group-item list-group-item-action py-2 ripple">
-                        <i class="bi bi-people-fill"></i> <span> Users</span>
-                    </a>
-                    <a href="{{ route('task.index') }}" class="list-group-item list-group-item-action py-2 ripple active ">
+                    @if (Auth::user()->role_id == 1)
+                        <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+                            <i class="bi bi-speedometer2"></i> <span> Main dashboard</span>
+                        </a>
+                        <a href="{{ route('role.index') }}" class="list-group-item list-group-item-action py-2 ripple ">
+                            <i class="bi bi-key-fill"></i> <span> Role</span>
+                        </a>
+                        <a href="{{ route('user.index') }}" class="list-group-item list-group-item-action py-2 ripple">
+                            <i class="bi bi-people-fill"></i> <span> Users</span>
+                        </a>
+                    @endif
+                    <a href="{{ route('task.index') }}" class="list-group-item list-group-item-action py-2 ripple ">
                         <i class="bi bi-graph-up-arrow"></i> <span> Task</span>
                     </a>
-                    <a href="{{ route('task.report',Auth::id()) }}" class="list-group-item list-group-item-action py-2 ripple">
+                    <a href="{{ route('task.report', Auth::id()) }}"
+                        class="list-group-item list-group-item-action py-2 ripple ">
                         <i class="bi bi-graph-up-arrow"></i> <span>Activity Report</span>
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action py-2 ripple">
-                        <i class="bi bi-pie-chart-fill"></i> <span> SEO</span>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action py-2 ripple">
-                        <i class="bi bi-list-check"></i> <span> Orders</span>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action py-2 ripple">
-                        <i class="bi bi-globe"></i> <span> International</span>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action py-2 ripple">
-                        <i class="bi bi-building"></i> <span> Partners</span>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action py-2 ripple">
-                        <i class="bi bi-calendar-check"></i> <span> Calendar</span>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action py-2 ripple">
-                        <i class="bi bi-cash-coin"></i> <span> Sales</span></a>
-                        <a href="{{ route('user.logout') }}" class="list-group-item list-group-item-action py-2 ripple">
-                            <i class="bi bi-box-arrow-in-right"></i> <span> LogOut</span></a>
+                    <a href="{{ route('user.logout') }}" class="list-group-item list-group-item-action py-2 ripple">
+                        <i class="bi bi-box-arrow-in-right"></i> <span> LogOut</span></a>
                 </div>
             </div>
         </nav>
+
         <!-- Sidebar -->
     </header>
 
