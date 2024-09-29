@@ -33,6 +33,7 @@ Route::prefix('admin')->group(function () {
     Route::middleware('authUser')->group(function () {
 
         // User
+        Route::get('dashboard',[DailyActivityController::class,'dashboard'])->name('user.dashboard');
         Route::get('user', [UserController::class, 'index'])->name('user.index');
         Route::get('user/create', [UserController::class, 'create'])->name('user.create');
         Route::post('user/create', [UserController::class, 'store'])->name('user.store');

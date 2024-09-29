@@ -18,6 +18,17 @@ class DailyActivityController extends Controller
     public function __construct(TaskService $taskService){
         $this->model=$taskService;
     }
+
+    public function dashboard(){
+        $pending=DB::table('tasks')->join('task_details','task_details.task_id','=','tasks.id')
+        ->where("created_by",Auth::id())
+        ->where('task_details.status',0)->count();
+        $completed=DB::table('tasks')->join('task_details','task_details.task_id','=','tasks.id')
+        ->where("created_by",Auth::id())
+        ->where('task_details.status',1)->count();
+        // dd($pending,$completed);
+        return view('DailyTask.Dashboard',compact('pending','completed'));
+    }
     public function index(){
         if(Auth::user()->role_id==1){
             $tasks=Task::with(['taskDetail','createdBy'])->get();

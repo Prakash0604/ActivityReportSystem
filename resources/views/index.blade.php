@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body class="">
@@ -23,10 +24,10 @@
         <nav id="sidebarMenu" class="collapse d-lg-block sidebar mt-0 collapse bg-white">
             <div class="position-sticky">
                 <div class="list-group list-group-flush mx-3">
+                    <a href="{{ route('user.dashboard') }}" class="list-group-item list-group-item-action py-2 ripple">
+                        <i class="bi bi-speedometer2"></i> <span> Dashboard</span>
+                    </a>
                     @if (Auth::user()->role_id == 1)
-                        <a href="#" class="list-group-item list-group-item-action py-2 ripple">
-                            <i class="bi bi-speedometer2"></i> <span> Main dashboard</span>
-                        </a>
                         <a href="{{ route('role.index') }}" class="list-group-item list-group-item-action py-2 ripple ">
                             <i class="bi bi-key-fill"></i> <span> Role</span>
                         </a>
